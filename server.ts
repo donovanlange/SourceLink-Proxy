@@ -6,9 +6,6 @@ import url = require('url');
 import request = require('request');
 
 http.createServer((req, res) => {
-  // res.write('req headers: ' + JSON.stringify(req.headers));
-  // res.end();
-  // return;
   var agent = req.headers['user-agent'];
   var user = req.headers['authorization'];
   if(!user){
