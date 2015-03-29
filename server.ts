@@ -6,11 +6,11 @@ import url = require('url');
 import request = require('request');
 
 http.createServer((req, res) => {
-  res.write('req headers: ' + JSON.stringify(req.headers));
-  res.end();
-  return;
-  var userAgent = req.headers['User-Agent'];
-  var user = req.headers['Authorization'];
+  // res.write('req headers: ' + JSON.stringify(req.headers));
+  // res.end();
+  // return;
+  var agent = req.headers['user-agent'];
+  var user = req.headers['authorization'];
   if(!user){
     res.statusCode = 401
     res.write('Authorization header required');
@@ -20,7 +20,7 @@ http.createServer((req, res) => {
   var authReq = request({
     url: 'https://api.github.com/',
     // https://developer.github.com/v3/#user-agent-required
-    headers: {'User-Agent': userAgent},
+    headers: {'User-Agent': agent},
     auth: {user: user}
   })
   .on('response', authRsp => {
@@ -28,7 +28,7 @@ http.createServer((req, res) => {
       var fileReq = request({
         // https://developer.github.com/changes/2014-04-25-user-content-security/
         url: 'https://raw.githubusercontent.com' + req.url,
-        headers: {'User-Agent': userAgent},
+        headers: {'User-Agent': agent},
         auth: {user: user}
       })
       .pipe(res);

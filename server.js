@@ -3,11 +3,8 @@
 var http = require('http');
 var request = require('request');
 http.createServer(function (req, res) {
-    res.write('req headers: ' + JSON.stringify(req.headers));
-    res.end();
-    return;
-    var userAgent = req.headers['User-Agent'];
-    var user = req.headers['Authorization'];
+    var agent = req.headers['user-agent'];
+    var user = req.headers['authorization'];
     if (!user) {
         res.statusCode = 401;
         res.write('Authorization header required');
@@ -17,7 +14,7 @@ http.createServer(function (req, res) {
     var authReq = request({
         url: 'https://api.github.com/',
         headers: {
-            'User-Agent': userAgent
+            'User-Agent': agent
         },
         auth: {
             user: user
@@ -27,7 +24,7 @@ http.createServer(function (req, res) {
             var fileReq = request({
                 url: 'https://raw.githubusercontent.com' + req.url,
                 headers: {
-                    'User-Agent': userAgent
+                    'User-Agent': agent
                 },
                 auth: {
                     user: user
