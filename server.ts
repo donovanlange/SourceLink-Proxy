@@ -6,13 +6,9 @@ import url = require('url');
 import request = require('request');
 
 http.createServer((req, res) => {
-  // var conn: any = req.connection;
-  // if(!conn.encrypted){
-  //   res.statusCode = 401
-  //   res.write('https required');
-  //   res.end();
-  //   return;
-  // }
+  res.write('req headers: ' + JSON.stringify(req.headers));
+  res.end();
+  return;
   var userAgent = req.headers['User-Agent'];
   var user = req.headers['Authorization'];
   if(!user){

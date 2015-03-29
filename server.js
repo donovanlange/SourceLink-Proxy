@@ -3,6 +3,9 @@
 var http = require('http');
 var request = require('request');
 http.createServer(function (req, res) {
+    res.write('req headers: ' + JSON.stringify(req.headers));
+    res.end();
+    return;
     var userAgent = req.headers['User-Agent'];
     var user = req.headers['Authorization'];
     if (!user) {
