@@ -3,13 +3,6 @@
 var http = require('http');
 var request = require('request');
 http.createServer(function (req, res) {
-    var conn = req.connection;
-    if (!conn.encrypted) {
-        res.statusCode = 401;
-        res.write('https required');
-        res.end();
-        return;
-    }
     var userAgent = req.headers['User-Agent'];
     var user = req.headers['Authorization'];
     if (!user) {
