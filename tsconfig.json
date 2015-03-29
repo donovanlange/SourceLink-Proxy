@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {},
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*.ts"
+    ],
+    "files": [
+        "./server.ts",
+        "./typings/form-data/form-data.d.ts",
+        "./typings/node/node.d.ts",
+        "./typings/request/request.d.ts",
+        "./typings/tsd.d.ts"
+    ]
+}
