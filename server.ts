@@ -1,9 +1,14 @@
 /// <reference path='typings/node/node.d.ts' />
 /// <reference path='typings/request/request.d.ts' />
+/// <reference path='node_modules/applicationinsights/applicationInsights.d.ts' />
 
 import http = require('http');
-import url = require('url');
 import request = require('request');
+import AppInsights = require('./node_modules/applicationinsights/applicationInsights');
+
+var appInsights = new AppInsights();
+appInsights.trackAllHttpServerRequests("favicon");
+appInsights.trackAllUncaughtExceptions();
 
 http.createServer((req, res) => {
   var agent = req.headers['user-agent'];

@@ -1,0 +1,2 @@
+# Autodetect text or binary. Do not leave merge conflict markers in the files.
+* text=auto merge=union
