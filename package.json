@@ -1,6 +1,9 @@
 {
   "dependencies": {
+    "applicationinsights": "^0.12.5",
     "request": "^2.54.0"
   },
-  "engines": {"node": "0.12.x"}
+  "engines": {
+    "node": "0.10.x"
+  }
 }
